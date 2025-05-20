@@ -76,5 +76,8 @@
     <Build Include="dbo\Stored Procedures\sp_BusinessSettings_Guardar.sql" />
     <Build Include="dbo\Stored Procedures\sp_Business_Listar.sql" />
     <Build Include="dbo\Stored Procedures\sp_BusinessSettings_Listar.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Services_Guardar.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Services_Listar.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Services_Actualizar.sql" />
   </ItemGroup>
 </Project>
