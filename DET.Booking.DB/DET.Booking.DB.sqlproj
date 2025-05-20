@@ -74,5 +74,7 @@
     <Build Include="dbo\Tables\AdditionalAttributes.sql" />
     <Build Include="dbo\Stored Procedures\sp_Business_Guardar.sql" />
     <Build Include="dbo\Stored Procedures\sp_BusinessSettings_Guardar.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Business_Listar.sql" />
+    <Build Include="dbo\Stored Procedures\sp_BusinessSettings_Listar.sql" />
   </ItemGroup>
 </Project>
