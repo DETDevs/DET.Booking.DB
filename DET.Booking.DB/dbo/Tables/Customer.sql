@@ -7,5 +7,7 @@
     [ModificationUser] VARCHAR NOT NULL,
     [ModificationDate] VARCHAR NOT NULL
 );
-
-
+GO
+ALTER TABLE Customer
+ADD CONSTRAINT FK_Customer_Persona
+    FOREIGN KEY (PersonaID) REFERENCES Person(PK_Person);

@@ -9,3 +9,7 @@
     [ModificationUser] VARCHAR NOT NULL,
     [ModificationDate] VARCHAR NOT NULL
 )
+GO
+ALTER TABLE BusinessSettings
+ADD CONSTRAINT FK_BusinessSettings_Business
+    FOREIGN KEY (BusinessID) REFERENCES Business(BusinessID);

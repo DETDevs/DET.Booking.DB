@@ -13,3 +13,7 @@
     [ModificationUser] VARCHAR NOT NULL,
     [ModificationDate] VARCHAR NOT NULL
 )
+GO
+ALTER TABLE BusinessHours
+ADD CONSTRAINT FK_BusinessHours_Business
+    FOREIGN KEY (BusinessID) REFERENCES Business(BusinessID);

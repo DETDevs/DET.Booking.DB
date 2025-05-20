@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Person]
 (
-	[PK_Person] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[PersonID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     [Name] NVARCHAR(100),
     [Email] NVARCHAR(100) UNIQUE,
     [PhoneNumber] NVARCHAR(20),

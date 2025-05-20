@@ -8,3 +8,7 @@
     [ModificationUser] VARCHAR NOT NULL,
     [ModificationDate] VARCHAR NOT NULL
 )
+GO
+ALTER TABLE BusinessConfigApis
+ADD CONSTRAINT FK_BusinessConfigApis_Business
+    FOREIGN KEY (BusinessID) REFERENCES Business(BusinessID);
