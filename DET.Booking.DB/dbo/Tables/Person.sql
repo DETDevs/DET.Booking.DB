@@ -5,8 +5,8 @@
     [Email] NVARCHAR(100) UNIQUE,
     [PhoneNumber] NVARCHAR(20),
     [IsActive] BIT NOT NULL,
-    [CreateUser] VARCHAR NOT NULL,
-    [CreateDate] VARCHAR NOT NULL,
-    [ModificationUser] VARCHAR NOT NULL,
-    [ModificationDate] VARCHAR NOT NULL
+    [CreateUser] VARCHAR(100) NOT NULL,
+    [CreateDate] DATETIME NOT NULL,
+    [ModificationUser] VARCHAR(100) NULL,
+    [ModificationDate] DATETIME NULL
 )

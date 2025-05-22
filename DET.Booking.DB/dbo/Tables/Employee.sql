@@ -1,14 +1,14 @@
 ﻿CREATE TABLE [dbo].[Employee]
 (
-	[EmployeeID] INT NOT NULL PRIMARY KEY,
+	[EmployeeID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	[BusinessID] INT NOT NULL,
     [PersonaID] INT NOT NULL,
     [Puesto] BIGINT NOT NULL,
 	[IsActive] BIT NOT NULL,
-	[CreateUser] VARCHAR NOT NULL,
-    [CreateDate] VARCHAR NOT NULL,
-    [ModificationUser] VARCHAR NOT NULL,
-    [ModificationDate] VARCHAR NOT NULL
+	[CreateUser] VARCHAR(100) NOT NULL,
+    [CreateDate] DATETIME NOT NULL,
+    [ModificationUser] VARCHAR(100) NOT NULL,
+    [ModificationDate] DATETIME NOT NULL
 );
 GO
 ALTER TABLE Employee

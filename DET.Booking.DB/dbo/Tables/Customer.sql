@@ -10,4 +10,4 @@
 GO
 ALTER TABLE Customer
 ADD CONSTRAINT FK_Customer_Persona
-    FOREIGN KEY (PersonaID) REFERENCES Person(PK_Person);
+    FOREIGN KEY (PersonaID) REFERENCES Person(PersonID);
