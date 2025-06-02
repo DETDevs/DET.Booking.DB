@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sp_BusinessSettings_Guardar]
+﻿CREATE PROCEDURE [dbo].[BusinessSettings_Guardar]
     @BusinessID INT,
     @Key VARCHAR(100),
     @Value VARCHAR(255),

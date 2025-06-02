@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sp_Services_ActualizarDinamico]
+﻿CREATE PROCEDURE [dbo].[Services_ActualizarDinamico]
     @ServiceID INT,
     @BusinessID INT = NULL,
     @EmployeeID INT = NULL,

@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROCEDURE [dbo].[sp_Employee_Guardar]
+﻿CREATE PROCEDURE [dbo].[Employee_Guardar]
     @BusinessID INT,
     @Name NVARCHAR(100),
     @Email NVARCHAR(100),

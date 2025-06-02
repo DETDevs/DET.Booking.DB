@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sp_BusinessSettings_Listar]
+﻿CREATE PROCEDURE [dbo].[BusinessSettings_Listar]
     @BusinessID INT = NULL,  -- Filtro opcional por negocio
     @Key VARCHAR(100) = NULL -- Filtro opcional por clave
 AS

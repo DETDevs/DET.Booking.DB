@@ -3,7 +3,7 @@
 	[EmployeeID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	[BusinessID] INT NOT NULL,
     [PersonaID] INT NOT NULL,
-    [Puesto] BIGINT NOT NULL,
+    [Workstation] BIGINT NOT NULL,
 	[IsActive] BIT NOT NULL,
 	[CreateUser] VARCHAR(100) NOT NULL,
     [CreateDate] DATETIME NOT NULL,

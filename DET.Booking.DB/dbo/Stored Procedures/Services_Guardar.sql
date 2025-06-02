@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sp_Services_Guardar]
+﻿CREATE PROCEDURE [dbo].[Services_Guardar]
     @BusinessID INT,
     @EmployeeID INT,
     @Name VARCHAR(100),

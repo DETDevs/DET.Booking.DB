@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sp_ListAvailableSchedulesEmployee]
+﻿CREATE PROCEDURE [dbo].[ListAvailableSchedulesEmployee]
     @EmployeeID INT,
     @Fecha DATE
 AS
@@ -27,7 +27,7 @@ BEGIN
     SELECT *
     INTO #Horario
     FROM EmployeeSchedule
-    WHERE EmployeeID = @EmployeeID AND Dia = @DiaSemana AND Estado = 1;
+    WHERE EmployeeID = @EmployeeID AND [Day] = @DiaSemana AND [State] = 1;
 
     IF NOT EXISTS (SELECT 1 FROM #Horario)
     BEGIN
@@ -41,13 +41,13 @@ BEGIN
         Cupos.HoraDesde,
         Cupos.HoraHasta
     FROM #Horario h
-    CROSS APPLY dbo.fn_GenerarCupos(h.HoraInicio, h.HoraFin, @DuracionMin) AS Cupos
+    CROSS APPLY dbo.fn_GenerarCupos(h.[StartTime], h.[EndTime], @DuracionMin) AS Cupos
     WHERE NOT EXISTS (
         SELECT 1
         FROM Reservations r
         WHERE r.EmployeeID = @EmployeeID
-          AND r.Fecha = @Fecha
-          AND r.Hora = Cupos.HoraDesde
+          AND r.[Date] = @Fecha
+          AND r.[Hour] = Cupos.HoraDesde
     )
     ORDER BY Cupos.HoraDesde;
 

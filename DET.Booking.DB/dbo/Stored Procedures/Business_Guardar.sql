@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sp_Business_Guardar]
+﻿CREATE PROCEDURE [dbo].[Business_Guardar]
     @Name VARCHAR(100),
     @Code VARCHAR(50),
     @PrimaryColor VARCHAR(20),
