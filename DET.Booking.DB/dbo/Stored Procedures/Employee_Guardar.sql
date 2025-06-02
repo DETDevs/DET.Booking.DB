@@ -6,9 +6,9 @@
     @Puesto BIGINT,
     @IsActive BIT,
     @CreateUser VARCHAR(50),
-    @CreateDate VARCHAR(50),
+    @CreateDate DATETIME,
     @ModificationUser VARCHAR(50),
-    @ModificationDate VARCHAR(50)
+    @ModificationDate DATETIME
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -33,9 +33,9 @@ BEGIN
         SET @PersonaID = SCOPE_IDENTITY();
     END
 
-    -- Insertar el empleado (EmployeeID generado automáticamente)
+    -- Insertar el empleado
     INSERT INTO Employee (
-        BusinessID, PersonaID, Puesto, IsActive,
+        BusinessID, PersonaID, Workstation, IsActive,
         CreateUser, CreateDate, ModificationUser, ModificationDate
     )
     VALUES (

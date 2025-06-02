@@ -2,10 +2,10 @@
 (
 	[CustomerID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     [PersonaID] INT NOT NULL,
-    [CreateUser] VARCHAR NOT NULL,
-    [CreateDate] VARCHAR NOT NULL,
-    [ModificationUser] VARCHAR NOT NULL,
-    [ModificationDate] VARCHAR NOT NULL
+    [CreateUser] VARCHAR(MAX) NOT NULL,
+    [CreateDate] DATETIME NOT NULL,
+    [ModificationUser] VARCHAR(MAX) NULL,
+    [ModificationDate] DATETIME NULL
 );
 GO
 ALTER TABLE Customer

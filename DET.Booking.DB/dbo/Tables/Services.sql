@@ -7,7 +7,7 @@
     [Description] VARCHAR(255) NOT NULL,
     [DutarionMin] VARCHAR(10) NOT NULL,
     [Price] VARCHAR(20) NOT NULL,
-    [DiasHabiles] VARCHAR(5) NOT NULL,
+    [DiasHabiles] VARCHAR(max) NOT NULL,
     [IsActive] BIT NOT NULL,
     [CreateUser] VARCHAR(50) NOT NULL,
     [CreateDate] DATETIME NOT NULL,

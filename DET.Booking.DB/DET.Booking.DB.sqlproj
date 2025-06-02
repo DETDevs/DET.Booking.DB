@@ -87,6 +87,9 @@
     <Build Include="dbo\Function\fn_GenerarCupos.sql" />
     <Build Include="dbo\Stored Procedures\ListAvailableSchedulesForService.sql" />
     <Build Include="dbo\Stored Procedures\ListAvailableSchedulesEmployee.sql" />
+    <Build Include="dbo\Stored Procedures\Reservation_Insert.sql" />
+    <Build Include="dbo\Tables\ReservationStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Reservation_UpdateState.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataTest\Script1.sql" />
