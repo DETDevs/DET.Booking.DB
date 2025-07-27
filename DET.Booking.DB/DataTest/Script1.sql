@@ -127,3 +127,26 @@
 --    @ReservationID = 4, 
 --    @NewStateID = 2,  -- 2 sería "Aprobada"
 --    @ModificationUser = 'adminUser';
+
+-- *************************************** INSERT ROLL ***************************************
+
+--INSERT INTO [dbo].[Rol] (
+--    RolID,
+--    RolName,
+--    RolDescription,
+--    RolStatus,
+--    CreateUser,
+--    CreateDate,
+--    ModificationUser,
+--    ModificationDate
+--)
+--VALUES (
+--    1,
+--    'Administrador',
+--    'Rol con acceso completo al sistema',
+--    'Activo',
+--    'admin',
+--    '2025-06-08',
+--    'admin',
+--    '2025-06-08'
+--);

@@ -15,19 +15,20 @@ BEGIN
             [ModificationDate] = GETDATE()
         WHERE [ReservationID] = @ReservationID;
 
-        -- Puedes verificar que la fila se haya actualizado
         IF @@ROWCOUNT = 0
         BEGIN
-            -- Si no se actualizó ninguna fila, generamos error para hacer rollback
             THROW 50000, 'No se encontró la reserva con el ID especificado.', 1;
         END
 
         COMMIT TRANSACTION;
+
+        -- Devolver la reserva actualizada
+        SELECT *
+        FROM [dbo].[Reservations]
+        WHERE [ReservationID] = @ReservationID;
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-
-        -- Opcional: puedes devolver el error que ocurrió
         THROW;
     END CATCH
 END

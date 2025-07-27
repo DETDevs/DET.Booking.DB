@@ -26,8 +26,8 @@ BEGIN
      INNER JOIN Business b ON s.BusinessID = b.BusinessID
      INNER JOIN Employee e ON s.EmployeeID = e.EmployeeID
      INNER JOIN Person p ON p.PersonID = e.PersonaID
-     WHERE (@BusinessID IS NULL OR s.BusinessID = @BusinessID)
-       AND (@EmployeeID IS NULL OR s.EmployeeID = @EmployeeID)
+     WHERE (@BusinessID IS NULL OR @BusinessID = 0 OR s.BusinessID = @BusinessID)
+       AND (@EmployeeID IS NULL OR @EmployeeID = 0 OR s.EmployeeID = @EmployeeID)
        AND (@IsActive IS NULL OR s.IsActive = @IsActive)
      ORDER BY s.Name;
 END;

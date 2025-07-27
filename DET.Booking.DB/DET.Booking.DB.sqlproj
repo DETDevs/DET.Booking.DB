@@ -71,7 +71,7 @@
     <Build Include="dbo\Tables\BusinessConfigApis.sql" />
     <Build Include="dbo\Tables\Services.sql" />
     <Build Include="dbo\Tables\Employee.sql" />
-    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\AppUser.sql" />
     <Build Include="dbo\Tables\Rol.sql" />
     <Build Include="dbo\Tables\AdditionalAttributes.sql" />
     <Build Include="dbo\Stored Procedures\Business_Guardar.sql" />
@@ -90,6 +90,8 @@
     <Build Include="dbo\Stored Procedures\Reservation_Insert.sql" />
     <Build Include="dbo\Tables\ReservationStatus.sql" />
     <Build Include="dbo\Stored Procedures\Reservation_UpdateState.sql" />
+    <Build Include="dbo\Stored Procedures\User_SearchByEmail.sql" />
+    <Build Include="dbo\Stored Procedures\User_Register.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataTest\Script1.sql" />
