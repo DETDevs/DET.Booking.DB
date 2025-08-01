@@ -57,8 +57,8 @@ BEGIN
             @IsActive,
             @CreateUser,
             GETDATE(),
-            @CreateUser,
-            GETDATE()
+            NULL,
+            NULL
         );
 
         COMMIT;

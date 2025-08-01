@@ -11,8 +11,8 @@
     [IsActive] BIT NOT NULL,
     [CreateUser] VARCHAR(50) NOT NULL,
     [CreateDate] DATETIME NOT NULL,
-    [ModificationUser] VARCHAR(50) NOT NULL,
-    [ModificationDate] DATETIME NOT NULL
+    [ModificationUser] VARCHAR(50) NULL,
+    [ModificationDate] DATETIME NULL
 );
 GO
 ALTER TABLE Services

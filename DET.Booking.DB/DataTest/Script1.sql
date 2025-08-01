@@ -9,6 +9,8 @@
 
 -- *************************************** INSERT EMPLOYEE ***************************************
 
+--TODO: Las variables @CreateDate, @ModificationUser @ModificationDate ya no se ocuparan eliminarlas de las sentencias de inserción
+
 --DECLARE @Now DATETIME = GETDATE();
 
 --EXEC [Employee_Guardar]
@@ -19,9 +21,6 @@
 --  @Puesto = 1001,
 --  @IsActive = 1,
 --  @CreateUser = 'admin',
---  @CreateDate = @Now,
---  @ModificationUser = 'admin',
---  @ModificationDate = @Now;
 
 
 --EXEC [Employee_Guardar]
@@ -32,9 +31,7 @@
 --  @Puesto = 2002,
 --  @IsActive = 1,
 --  @CreateUser = 'admin',
---  @CreateDate = @Now,
---  @ModificationUser = 'admin',
---  @ModificationDate = @Now;
+
 
 --EXEC [Employee_Guardar]
 --  @BusinessID = 2,
@@ -44,9 +41,7 @@
 --  @Puesto = 3003,
 --  @IsActive = 1,
 --  @CreateUser = 'admin',
---  @CreateDate = @Now,
---  @ModificationUser = 'admin',
---  @ModificationDate = @Now;
+
 
 -- *************************************** INSERT SERVICES ***************************************
 
@@ -81,6 +76,17 @@
 --   @DutarionMin = '30',
 --   @Price = '20.00',
 --   @DiasHabiles = 'Lunes a Sábado',
+--   @IsActive = 1,
+--   @CreateUser = 'admin';
+
+-- *************************************** INSERT SUB SERVICE ***************************************
+
+--EXEC [dbo].[SubService_Guardar]
+--   @ServiceID = 1,
+--   @Name = 'Baño basico full',
+--   @Description = 'Servicio de baño con todos los poderes',
+--   @DurationMin = '30',
+--   @Price = '8.00',
 --   @IsActive = 1,
 --   @CreateUser = 'admin';
 

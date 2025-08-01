@@ -7,8 +7,8 @@
 	[IsActive] BIT NOT NULL,
 	[CreateUser] VARCHAR(100) NOT NULL,
     [CreateDate] DATETIME NOT NULL,
-    [ModificationUser] VARCHAR(100) NOT NULL,
-    [ModificationDate] DATETIME NOT NULL
+    [ModificationUser] VARCHAR(100) NULL,
+    [ModificationDate] DATETIME NULL
 );
 GO
 ALTER TABLE Employee

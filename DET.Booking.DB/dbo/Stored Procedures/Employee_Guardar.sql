@@ -5,15 +5,13 @@
     @PhoneNumber NVARCHAR(20),
     @Puesto BIGINT,
     @IsActive BIT,
-    @CreateUser VARCHAR(50),
-    @CreateDate DATETIME,
-    @ModificationUser VARCHAR(50),
-    @ModificationDate DATETIME
+    @CreateUser VARCHAR(50)
 AS
 BEGIN
     SET NOCOUNT ON;
 
     DECLARE @PersonaID INT;
+    DECLARE @CreateDate DATETIME = GETDATE();
 
     -- Verificar si la persona ya existe por Email
     SELECT @PersonaID = PersonID FROM Person WHERE Email = @Email;
@@ -27,7 +25,7 @@ BEGIN
         )
         VALUES (
             @Name, @Email, @PhoneNumber, @IsActive,
-            @CreateUser, @CreateDate, @ModificationUser, @ModificationDate
+            @CreateUser, @CreateDate, NULL, NULL
         );
 
         SET @PersonaID = SCOPE_IDENTITY();
@@ -40,7 +38,7 @@ BEGIN
     )
     VALUES (
         @BusinessID, @PersonaID, @Puesto, @IsActive,
-        @CreateUser, @CreateDate, @ModificationUser, @ModificationDate
+        @CreateUser, @CreateDate, NULL, NULL
     );
 END
 GO
