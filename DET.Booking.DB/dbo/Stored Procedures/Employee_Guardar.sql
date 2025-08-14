@@ -13,6 +13,12 @@ BEGIN
     DECLARE @CreateDate DATETIME = GETDATE();
     DECLARE @IsActive BIT = 1;
 
+    IF @PersonID IS NULL
+    BEGIN
+		-- Si PersonID es NULL, asignamos un nuevo ID
+		SET @PersonID = 0;
+	END
+
     -- Si no existe, insertarmos
    IF NOT EXISTS (SELECT 1 FROM Person WHERE PersonID = @PersonID)
     BEGIN
