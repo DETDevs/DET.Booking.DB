@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[ReservationStatus]
+(
+	 [StatusID] INT PRIMARY KEY IDENTITY(1,1),
+     [StatusName] VARCHAR(50) NOT NULL
+)

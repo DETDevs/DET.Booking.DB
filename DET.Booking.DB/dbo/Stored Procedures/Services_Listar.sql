@@ -1,0 +1,33 @@
+﻿CREATE PROCEDURE [dbo].[Services_Listar]
+    @BusinessID INT = NULL,
+    @EmployeeID INT = NULL,
+    @IsActive BIT = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+     s.ServiceID,
+     s.BusinessID,
+     b.Name AS BusinessName,
+     s.EmployeeID,
+     P.Name AS EmployeeName,
+     s.Name AS ServiceName,
+     s.Description,
+     s.DutarionMin,
+     s.Price,
+     s.DiasHabiles,
+     s.IsActive,
+     s.CreateUser,
+     s.CreateDate,
+     s.ModificationUser,
+     s.ModificationDate
+     FROM Services s
+     INNER JOIN Business b ON s.BusinessID = b.BusinessID
+     INNER JOIN Employee e ON s.EmployeeID = e.EmployeeID
+     INNER JOIN Person p ON p.PersonID = e.PersonaID
+     WHERE (@BusinessID IS NULL OR @BusinessID = 0 OR s.BusinessID = @BusinessID)
+       AND (@EmployeeID IS NULL OR @EmployeeID = 0 OR s.EmployeeID = @EmployeeID)
+       AND (@IsActive IS NULL OR s.IsActive = @IsActive)
+     ORDER BY s.Name;
+END;
