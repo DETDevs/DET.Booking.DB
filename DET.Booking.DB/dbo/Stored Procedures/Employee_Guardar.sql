@@ -4,7 +4,6 @@
     @Email NVARCHAR(100),
     @PhoneNumber NVARCHAR(20),
     @Puesto BIGINT,
-    @IsActive BIT,
     @CreateUser VARCHAR(50)
 AS
 BEGIN
@@ -12,6 +11,7 @@ BEGIN
 
     DECLARE @PersonaID INT;
     DECLARE @CreateDate DATETIME = GETDATE();
+    DECLARE @IsActive BIT = 1;
 
     -- Verificar si la persona ya existe por Email
     SELECT @PersonaID = PersonID FROM Person WHERE Email = @Email;

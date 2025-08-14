@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[Employee_Listar]
-	@EmployeeID INT = NULL
+	@EmployeeID INT = NULL,
+	@BusinessID INT = NULL
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -20,6 +21,7 @@ BEGIN
 	FROM Employee e
 	INNER JOIN Business b ON e.BusinessID = b.BusinessID
 	INNER JOIN Person p ON e.PersonaID = p.PersonID
-	WHERE e.EmployeeID = @EmployeeID
+	WHERE (@EmployeeID IS NULL OR e.EmployeeID = @EmployeeID)
+     AND  (@BusinessID IS NULL OR e.BusinessID = @BusinessID)
 	ORDER BY p.Name;
 END;
