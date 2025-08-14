@@ -1,4 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Employee_Guardar]
+    @PersonID INT,
     @BusinessID INT,
     @Name NVARCHAR(100),
     @Email NVARCHAR(100),
@@ -9,15 +10,11 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @PersonaID INT;
     DECLARE @CreateDate DATETIME = GETDATE();
     DECLARE @IsActive BIT = 1;
 
-    -- Verificar si la persona ya existe por Email
-    SELECT @PersonaID = PersonID FROM Person WHERE Email = @Email;
-
-    -- Si no existe, insertarla
-    IF @PersonaID IS NULL
+    -- Si no existe, insertarmos
+   IF NOT EXISTS (SELECT 1 FROM Person WHERE PersonID = @PersonID)
     BEGIN
         INSERT INTO Person (
             [Name], [Email], [PhoneNumber], [IsActive],
@@ -28,17 +25,40 @@ BEGIN
             @CreateUser, @CreateDate, NULL, NULL
         );
 
-        SET @PersonaID = SCOPE_IDENTITY();
+        SET @PersonID = SCOPE_IDENTITY();
+
+          -- Insertar el empleado
+        INSERT INTO Employee (
+            BusinessID, PersonaID, Workstation, IsActive,
+            CreateUser, CreateDate, ModificationUser, ModificationDate
+        )
+        VALUES (
+            @BusinessID, @PersonID, @Puesto, @IsActive,
+            @CreateUser, @CreateDate, NULL, NULL
+        );
+    END
+    ELSE
+    BEGIN
+
+        MERGE INTO dbo.Person AS target
+        USING 
+        (
+            VALUES (@PersonID, @Name, @Email, @PhoneNumber, @IsActive, @CreateUser, @CreateDate, NULL, NULL)
+        ) AS Source 
+        (
+		    PersonID, [Name], Email, PhoneNumber, IsActive, CreateUser, CreateDate, ModificationUser, ModificationDate
+	    )
+        ON target.PersonID = Source.PersonID
+	    WHEN MATCHED THEN
+		    UPDATE SET 
+			    target.Name = CASE WHEN Source.Name IS NOT NULL THEN Source.Name ELSE target.Name END,
+                target.Email = CASE WHEN Source.Email IS NOT NULL THEN Source.Email ELSE target.Email END,
+                target.PhoneNumber = CASE WHEN Source.PhoneNumber IS NOT NULL THEN Source.PhoneNumber ELSE target.PhoneNumber END,
+                target.IsActive = CASE WHEN Source.IsActive IS NOT NULL THEN Source.IsActive ELSE target.IsActive END,
+                target.ModificationUser = Source.CreateUser,
+                target.ModificationDate = Source.CreateDate;
+
     END
 
-    -- Insertar el empleado
-    INSERT INTO Employee (
-        BusinessID, PersonaID, Workstation, IsActive,
-        CreateUser, CreateDate, ModificationUser, ModificationDate
-    )
-    VALUES (
-        @BusinessID, @PersonaID, @Puesto, @IsActive,
-        @CreateUser, @CreateDate, NULL, NULL
-    );
 END
 GO
