@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SubService_Guardar]
+﻿CREATE PROCEDURE [dbo].[SubService_Save]
     @ServiceID INT,
     @Name VARCHAR(100),
     @Description VARCHAR(255),

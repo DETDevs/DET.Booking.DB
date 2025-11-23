@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SubServices_Listar]
+﻿CREATE PROCEDURE [dbo].[SubServices_List]
 	 @ServiceID INT = NULL
 AS
 BEGIN

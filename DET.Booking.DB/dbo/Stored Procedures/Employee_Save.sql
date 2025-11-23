@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Employee_Guardar]
+﻿CREATE PROCEDURE [dbo].[Employee_Save]
     @PersonID INT,
     @BusinessID INT,
     @Name NVARCHAR(100),

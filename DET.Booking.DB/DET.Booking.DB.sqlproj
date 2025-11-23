@@ -74,14 +74,14 @@
     <Build Include="dbo\Tables\AppUser.sql" />
     <Build Include="dbo\Tables\Rol.sql" />
     <Build Include="dbo\Tables\AdditionalAttributes.sql" />
-    <Build Include="dbo\Stored Procedures\Business_Guardar.sql" />
-    <Build Include="dbo\Stored Procedures\BusinessSettings_Guardar.sql" />
-    <Build Include="dbo\Stored Procedures\Business_Listar.sql" />
+    <Build Include="dbo\Stored Procedures\Business_Save.sql" />
+    <Build Include="dbo\Stored Procedures\BusinessSettings_Save.sql" />
+    <Build Include="dbo\Stored Procedures\Business_List.sql" />
     <Build Include="dbo\Stored Procedures\BusinessSettings_Listar.sql" />
-    <Build Include="dbo\Stored Procedures\Services_Guardar.sql" />
-    <Build Include="dbo\Stored Procedures\Services_Listar.sql" />
-    <Build Include="dbo\Stored Procedures\Services_Actualizar.sql" />
-    <Build Include="dbo\Stored Procedures\Employee_Guardar.sql" />
+    <Build Include="dbo\Stored Procedures\Services_Save.sql" />
+    <Build Include="dbo\Stored Procedures\Services_List.sql" />
+    <Build Include="dbo\Stored Procedures\Services_Update.sql" />
+    <Build Include="dbo\Stored Procedures\Employee_Save.sql" />
     <Build Include="dbo\Tables\EmployeeSchedule.sql" />
     <Build Include="dbo\Tables\Reservations.sql" />
     <Build Include="dbo\Function\fn_GenerarCupos.sql" />
@@ -93,9 +93,9 @@
     <Build Include="dbo\Stored Procedures\User_SearchByEmail.sql" />
     <Build Include="dbo\Stored Procedures\User_Register.sql" />
     <Build Include="dbo\Tables\SubServices.sql" />
-    <Build Include="dbo\Stored Procedures\SubService_Guardar.sql" />
-    <Build Include="dbo\Stored Procedures\SubServices_Listar.sql" />
-    <Build Include="dbo\Stored Procedures\Employee_Listar.sql" />
+    <Build Include="dbo\Stored Procedures\SubService_Save.sql" />
+    <Build Include="dbo\Stored Procedures\SubServices_List.sql" />
+    <Build Include="dbo\Stored Procedures\Employee_List.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataTest\Script1.sql" />

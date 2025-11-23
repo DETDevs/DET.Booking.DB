@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[BusinessSettings_Guardar]
+﻿CREATE PROCEDURE [dbo].[BusinessSettings_Save]
     @SettingID INT = NULL,        -- Si es NULL, se inserta; si tiene valor, se actualiza
     @BusinessID INT,
     @Key VARCHAR(100),

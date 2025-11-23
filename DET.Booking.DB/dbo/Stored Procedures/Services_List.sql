@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Services_Listar]
+﻿CREATE PROCEDURE [dbo].[Services_List]
     @BusinessID INT = NULL,
     @EmployeeID INT = NULL,
     @IsActive BIT = NULL

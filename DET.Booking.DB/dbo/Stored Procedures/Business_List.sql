@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Business_Listar]
+﻿CREATE PROCEDURE [dbo].[Business_List]
     @IsActive BIT = NULL,
     @Code VARCHAR(50) = NULL -- filtro opcional por código de negocio
 AS

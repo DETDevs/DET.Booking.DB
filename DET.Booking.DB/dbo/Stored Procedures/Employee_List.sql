@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Employee_Listar]
+﻿CREATE PROCEDURE [dbo].[Employee_List]
 	@EmployeeID INT = NULL,
 	@BusinessID INT = NULL
 AS
