@@ -12,19 +12,45 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        -- Validar que no exista otro negocio con el mismo código
-        IF EXISTS (
-            SELECT 1 FROM Business WHERE Code = @Code AND IsActive = 1
-        )
+        DECLARE @IsActive BIT = 1;
+        DECLARE @CreateDate DATETIME = GETDATE();
+
+        IF @Code IS NULL
         BEGIN
-            RAISERROR('Ya existe un negocio activo con ese código.', 16, 1);
-            ROLLBACK;
-            RETURN;
+            SET @Code = '';
         END
 
-        -- Insertar nuevo negocio
-        INSERT INTO Business (Name, Code, PrimaryColor, SecondColor, Logo, IsActive, CreateUser, CreateDate)
-        VALUES (@Name, @Code, @PrimaryColor, @SecondColor, @Logo, 1, @CreateUser, GETDATE());
+
+        IF NOT EXISTS (SELECT 1 FROM Business WHERE Code = @Code)
+        BEGIN
+            -- Insertar nuevo negocio
+            INSERT INTO Business (Name, Code, PrimaryColor, SecondColor, Logo, IsActive, CreateUser, CreateDate)
+            VALUES (@Name, @Code, @PrimaryColor, @SecondColor, @Logo, @IsActive, @CreateUser, @CreateDate);
+        END
+        ELSE
+        BEGIN
+            MERGE INTO Business AS target
+            USING 
+			(
+				VALUES (@Name, @Code, @PrimaryColor, @SecondColor, @Logo, @IsActive, @CreateUser, @CreateDate)
+			) AS Source 
+			(
+				Name, Code, PrimaryColor, SecondColor, Logo, IsActive, CreateUser, CreateDate
+			)
+            ON target.Code = Source.Code
+			WHEN MATCHED THEN
+				UPDATE SET 
+					target.Name = CASE WHEN Source.Name IS NOT NULL THEN Source.Name ELSE target.Name END,
+					target.PrimaryColor = CASE WHEN Source.PrimaryColor IS NOT NULL THEN Source.PrimaryColor ELSE target.PrimaryColor END,
+					target.SecondColor = CASE WHEN Source.SecondColor IS NOT NULL THEN Source.SecondColor ELSE target.SecondColor END,
+					target.Logo = CASE WHEN Source.Logo IS NOT NULL THEN Source.Logo ELSE target.Logo END,
+					target.IsActive = Source.IsActive,
+					target.ModificationUser = Source.CreateUser,
+					target.ModificationDate = GETDATE()
+			WHEN NOT MATCHED THEN
+				INSERT (Name, Code, PrimaryColor, SecondColor, Logo, IsActive, CreateUser, CreateDate)
+				VALUES (Source.Name, Source.Code, Source.PrimaryColor, Source.SecondColor, Source.Logo, Source.IsActive, Source.CreateUser, Source.CreateDate);
+        END
 
         COMMIT;
     END TRY

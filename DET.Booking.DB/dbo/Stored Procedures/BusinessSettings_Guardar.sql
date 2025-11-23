@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[BusinessSettings_Guardar]
+    @SettingID INT = NULL,        -- Si es NULL, se inserta; si tiene valor, se actualiza
     @BusinessID INT,
     @Key VARCHAR(100),
-    @Value VARCHAR(255),
-    @IsActive BIT,
-    @User VARCHAR(50)
+    @Value NVARCHAR(MAX),
+    @CreateUser VARCHAR(50)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -11,27 +11,20 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        IF EXISTS (
-            SELECT 1 FROM BusinessSettings
-            WHERE BusinessID = @BusinessID AND [Key] = @Key
-        )
+        DECLARE @IsActive BIT = 1;
+        DECLARE @CreateDate DATETIME = GETDATE();
+
+         IF @SettingID IS NULL
         BEGIN
-            -- Actualizar registro existente
-            UPDATE BusinessSettings
-            SET
-                [Value] = @Value,
-                IsActive = @IsActive,
-                ModificationUser = @User,
-                ModificationDate = GETDATE()
-            WHERE BusinessID = @BusinessID AND [Key] = @Key;
+            SET @SettingID = '';
         END
-        ELSE
+
+        IF NOT EXISTS (SELECT 1 FROM BusinessSettings WHERE SettingID = @SettingID AND [Key] = @Key)
         BEGIN
-            -- Insertar nuevo registro
-            INSERT INTO BusinessSettings
-                (BusinessID, [Key], [Value], IsActive, CreateUser, CreateDate, ModificationUser, ModificationDate)
-            VALUES
-                (@BusinessID, @Key, @Value, @IsActive, @User, GETDATE(), NULL, NULL);
+           INSERT INTO BusinessSettings
+            (BusinessID, [Key], [Value], IsActive, CreateUser, CreateDate, ModificationUser, ModificationDate)
+           VALUES
+            (@BusinessID, @Key, @Value, @IsActive, @CreateUser, @CreateDate, NULL, NULL);
         END
 
         COMMIT;
